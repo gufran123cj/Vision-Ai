@@ -1,103 +1,103 @@
 # GitHub Repository Setup Guide
 
-Bu dosya projeyi GitHub'a yüklemek için hazırlık adımlarını içerir.
+This file contains the preparation steps for uploading the project to GitHub.
 
-## ✅ Hazırlık Kontrol Listesi
+## ✅ Preparation Checklist
 
-### 1. Dosya Yapısı Kontrolü
-- [x] `.gitignore` dosyası güncellendi
-- [x] `README.md` dosyası güncellendi
-- [x] `LICENSE` dosyası eklendi
-- [x] `CONTRIBUTING.md` dosyası eklendi
+### 1. File Structure Check
+- [x] `.gitignore` file updated
+- [x] `README.md` file updated
+- [x] `LICENSE` file added
+- [x] `CONTRIBUTING.md` file added
 
-### 2. Görmezden Gelinecek Dosyalar
-Aşağıdaki dosya ve klasörler `.gitignore` ile otomatik olarak ignore edilecek:
+### 2. Files to Ignore
+The following files and folders will be automatically ignored by `.gitignore`:
 - `venv312/` - Virtual environment
 - `runs/` - Training outputs
 - `results/` - Test results
-- `*.pt`, `*.pth` - Model dosyaları (büyük dosyalar)
-- `*.cache` - Cache dosyaları
+- `*.pt`, `*.pth` - Model files (large files)
+- `*.cache` - Cache files
 - `__pycache__/` - Python cache
-- `*.pdf` - PDF dosyaları
-- `data/cifar-10-batches-py/` - Büyük dataset dosyaları
-- `data/MNIST/` - Büyük dataset dosyaları
+- `*.pdf` - PDF files
+- `data/cifar-10-batches-py/` - Large dataset files
+- `data/MNIST/` - Large dataset files
 
-### 3. GitHub'a Yükleme Adımları
+### 3. Uploading to GitHub Steps
 
-#### İlk Kurulum
+#### Initial Setup
 ```bash
-# Git repository'yi başlat
+# Initialize Git repository
 git init
 
-# Tüm dosyaları ekle
+# Add all files
 git add .
 
-# İlk commit
+# First commit
 git commit -m "Initial commit: Four Week Vision AI Training Program"
 
-# GitHub'da yeni repository oluştur, sonra:
+# Create new repository on GitHub, then:
 git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
 git branch -M main
 git push -u origin main
 ```
 
-#### Sonraki Güncellemeler
+#### Subsequent Updates
 ```bash
-# Değişiklikleri kontrol et
+# Check changes
 git status
 
-# Değişiklikleri ekle
+# Add changes
 git add .
 
-# Commit yap
+# Commit
 git commit -m "Update: Description of changes"
 
-# GitHub'a yükle
+# Push to GitHub
 git push
 ```
 
-## 📋 Repository İçeriği
+## 📋 Repository Contents
 
-### Ana Dosyalar
-- `README.md` - Ana proje dokümantasyonu
-- `SETUP.md` - Detaylı kurulum rehberi
-- `requirements.txt` - Python bağımlılıkları
-- `Dockerfile` - Docker container yapılandırması
-- `docker-compose.yml` - Docker Compose yapılandırması
+### Main Files
+- `README.md` - Main project documentation
+- `SETUP.md` - Detailed setup guide
+- `requirements.txt` - Python dependencies
+- `Dockerfile` - Docker container configuration
+- `docker-compose.yml` - Docker Compose configuration
 
-### Proje Klasörleri
+### Project Folders
 - `week1/` - AI & Deep Learning Foundations
 - `week2/` - Convolutional Neural Networks
 - `week3/` - Advanced Vision Tasks
 - `week4/` - Capstone Project (PPE Detector)
 
-### Dokümantasyon
-- `PROJECT_STRUCTURE.md` - Detaylı proje yapısı
-- `DATASET_GUIDE.md` - Dataset kullanım rehberi
-- `week4/README.md` - Week 4 proje dokümantasyonu
-- `week4/PROJECT_STATUS.md` - Proje durum raporu
+### Documentation
+- `PROJECT_STRUCTURE.md` - Detailed project structure
+- `DATASET_GUIDE.md` - Dataset usage guide
+- `week4/README.md` - Week 4 project documentation
+- `week4/PROJECT_STATUS.md` - Project status report
 
-## ⚠️ Önemli Notlar
+## ⚠️ Important Notes
 
-1. **Büyük Dosyalar**: Model dosyaları (`.pt`), dataset dosyaları ve training outputs GitHub'a yüklenmeyecek (`.gitignore` ile ignore edildi)
+1. **Large Files**: Model files (`.pt`), dataset files, and training outputs will not be uploaded to GitHub (ignored by `.gitignore`)
 
-2. **Model Eğitimi**: Kullanıcılar kendi modellerini eğitmeli:
+2. **Model Training**: Users should train their own models:
    ```bash
    cd week4/YOLO-Safety-Equipment-Detection-main
    python train_model.py
    ```
 
-3. **Dataset**: Dataset dosyaları büyük olduğu için yüklenmeyecek. Kullanıcılar kendi dataset'lerini kullanmalı veya açık kaynak dataset'lerden indirmeli.
+3. **Dataset**: Dataset files are too large to upload. Users should use their own datasets or download from open-source datasets.
 
-4. **Virtual Environment**: `venv312/` klasörü ignore edildi. Kullanıcılar kendi virtual environment'larını oluşturmalı.
+4. **Virtual Environment**: The `venv312/` folder is ignored. Users should create their own virtual environments.
 
-## 🎯 Repository Açıklaması (GitHub Description)
+## 🎯 Repository Description (GitHub Description)
 
 ```
 Four Week Training Program for Vision AI - Master Computer Vision using PyTorch, OpenCV, and YOLO. Includes real-time PPE detection capstone project with Docker deployment.
 ```
 
-## 🏷️ Önerilen Tags
+## 🏷️ Recommended Tags
 
 - `computer-vision`
 - `pytorch`
@@ -110,26 +110,26 @@ Four Week Training Program for Vision AI - Master Computer Vision using PyTorch,
 - `machine-learning`
 - `python`
 
-## 📝 README.md Özellikleri
+## 📝 README.md Features
 
-Ana README.md dosyası şunları içerir:
-- Proje genel bakışı
-- Hızlı başlangıç rehberi
-- Kurulum adımları
-- Haftalık program özeti
-- Docker deployment bilgileri
-- Kaynak linkler
+The main README.md file includes:
+- Project overview
+- Quick start guide
+- Installation steps
+- Weekly schedule summary
+- Docker deployment information
+- Resource links
 
-## ✅ Son Kontrol
+## ✅ Final Check
 
-GitHub'a yüklemeden önce:
-- [ ] `.gitignore` dosyası doğru yapılandırıldı
-- [ ] `README.md` güncel ve eksiksiz
-- [ ] Büyük dosyalar ignore edildi
-- [ ] LICENSE dosyası eklendi
-- [ ] Tüm dokümantasyon dosyaları mevcut
+Before uploading to GitHub:
+- [ ] `.gitignore` file is properly configured
+- [ ] `README.md` is up to date and complete
+- [ ] Large files are ignored
+- [ ] LICENSE file is added
+- [ ] All documentation files are present
 
 ---
 
-**Hazır!** Artık projeyi GitHub'a yükleyebilirsiniz.
+**Ready!** You can now upload the project to GitHub.
 
