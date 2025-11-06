@@ -51,12 +51,12 @@ RUN ln -sf /usr/bin/python3.12 /usr/bin/python && \
 # Copy requirements first for better Docker layer caching
 COPY requirements.txt .
 
-# Install Python dependencies
-RUN pip install --no-cache-dir --upgrade pip setuptools wheel && \
-    pip install --no-cache-dir -r requirements.txt
+# Install PyTorch with CUDA 11.8 support first (before other dependencies)
+RUN python3.12 -m pip install --no-cache-dir --upgrade pip setuptools wheel && \
+    python3.12 -m pip install --no-cache-dir torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 
-# Install PyTorch with CUDA 11.8 support
-RUN pip install --no-cache-dir torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+# Install Python dependencies (PyTorch packages will be skipped as already installed)
+RUN python3.12 -m pip install --no-cache-dir -r requirements.txt
 
 # Copy application code
 COPY . .
