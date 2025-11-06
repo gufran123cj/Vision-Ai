@@ -7,13 +7,16 @@ services:
       dockerfile: Dockerfile
     container_name: vision-ai-training
 
-    # GPU tahsisi (Compose için doğru yöntem)
-    device_requests:
-      - driver: nvidia
-        count: all
-        capabilities: ["gpu"]
+    # ✅ GPU için doğru Compose sözdizimi
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all         # 1 yazarsan tek GPU ayırır
+              capabilities: [gpu]
 
-    # Windows/WSL2'de webcam bağlama çalışmaz; Linux'taysan aç:
+    # Windows'ta webcam bağlama çalışmaz, Linux'taysan aç:
     # devices:
     #   - /dev/video0:/dev/video0
 
@@ -31,11 +34,6 @@ services:
       - PYTHONUNBUFFERED=1
       - PYTHONDONTWRITEBYTECODE=1
       - NVIDIA_VISIBLE_DEVICES=all
-      # Çakışma ihtimali varsa bunu kaldır: CUDA_VISIBLE_DEVICES
-      # - CUDA_VISIBLE_DEVICES=0
-
     restart: unless-stopped
     stdin_open: true
     tty: true
-    # Örnek komut (istiyorsan aç):
-    # command: python week4/YOLO-Safety-Equipment-Detection-main/train_model.py
