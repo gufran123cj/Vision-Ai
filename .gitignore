@@ -1,0 +1,103 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+venv312/
+env/
+ENV/
+.venv
+*.egg-info/
+dist/
+build/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+*.ipynb_checkpoints/
+
+# Data files (large datasets - keep structure but ignore content)
+data/cifar-10-batches-py/
+data/MNIST/
+*.csv
+*.h5
+*.hdf5
+*.pkl
+*.pickle
+*.tar.gz
+
+# Model files (large - users should train their own)
+models/*.pt
+models/*.pth
+models/*.ckpt
+models/*.onnx
+models/*.pb
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.pb
+
+# Training outputs and results
+runs/
+results/
+*.cache
+labels.cache
+data_fixed.yaml
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.sublime-project
+*.sublime-workspace
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+logs/
+*.log
+tensorboard/
+*.events.*
+
+# Docker
+.dockerignore
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Output files
+output/
+*.png
+*.jpg
+*.jpeg
+*.avi
+*.mp4
+*.mov
+*.gif
+
+# Keep structure but ignore large files
+week4/YOLO-Safety-Equipment-Detection-main/runs/
+week4/YOLO-Safety-Equipment-Detection-main/results/
+week4/YOLO-Safety-Equipment-Detection-main/*.pt
+week4/YOLO-Safety-Equipment-Detection-main/data/*.cache
+
+# PDF files (training materials)
+*.pdf
+
+# Test files
+test_installation.py
+
+
+
+
+
+

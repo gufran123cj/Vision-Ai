@@ -1,111 +1,217 @@
-# 🧠 Vision AI - Week 1: From ML to DL
+# Four Week Training Program for Vision AI
 
-Bu hafta, klasik Makine Öğrenmesinden (ML) Derin Öğrenmeye (DL) geçiş sürecini teoriden pratiğe adım adım öğreneceksin.  
-Her modül, teorik açıklamalar, uygulamalı kod örnekleri ve mini deneylerle desteklenmiştir.
+A comprehensive 4-week program to master Computer Vision using PyTorch, OpenCV, and modern deep learning techniques.
 
----
+[![Python](https://img.shields.io/badge/Python-3.12-blue.svg)](https://www.python.org/)
+[![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-orange.svg)](https://pytorch.org/)
+[![OpenCV](https://img.shields.io/badge/OpenCV-4.8+-green.svg)](https://opencv.org/)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-## **01 — Theory: From ML to DL**
+## Learning Objectives
 
-### 🎯 Amaç
-Klasik ML yaklaşımlarının sınırlarını ve DL’in neden doğduğunu anlamak;  
-Gradient Descent mantığını sezgisel olarak gözlemlemek.
+By the end of this program, you will be able to:
 
-### 📘 İçerik
-- ML ve DL farkı
-- Supervised / Unsupervised Learning
-- Neural Networks: katman, nöron, aktivasyon fonksiyonları
-- Backpropagation ve Gradient Descent
-- Overfitting, learning rate ve loss dinamikleri
+- Understand the fundamentals of deep learning and neural networks
+- Build, train, and evaluate Convolutional Neural Networks (CNNs) using Python and PyTorch
+- Implement common computer vision tasks: image classification, object detection, and segmentation
+- Apply transfer learning with pre-trained models to solve custom problems efficiently
+- Develop and containerize a real-time vision application
 
-### 🧩 Görevler
-1. **Not alma:** Her kavram için 3–5 maddelik özet + küçük şemalar.
-2. **Mini deney:** `y ≈ w*x` modelinde MSE’yi minimize eden GD döngüsü.
-3. **Karşılaştırma:** Aynı veriyi sklearn `LinearRegression` ile çöz, sonuç farklarını incele.
+## Core Technologies
 
-### ✅ Çıktı Dosyası
-📄 `01_theory_from_ml_to_dl.ipynb`
+- **Primary Language**: Python
+- **Key Libraries**: PyTorch, OpenCV, NumPy, Matplotlib
+- **Tools**: Jupyter Notebooks, Git, Docker
 
----
+## Project Structure
 
-## **02 — PyTorch Fundamentals**
-
-### 🎯 Amaç
-PyTorch kütüphanesinin temel taşlarını (Tensor, Autograd, Device) öğrenmek ve  
-grad takibi mantığını anlamak.
-
-### 📘 İçerik
-- `torch.Tensor` oluşturma, shape ve dtype kontrolü
-- Cihaz seçimi (`cpu` / `cuda`)
-- `requires_grad`, `backward()`, `no_grad()`
-- `view()` / `reshape()` farkı
-- `matmul` ile matris çarpımı
-
-### 🧩 Görevler
-1. **Tensor 101:**
-   - Rastgele tensor oluştur, dilimle, yeniden şekillendir.
-   - `matmul` ile basit lineer işlem yap.
-2. **Autograd Deneyi:**
-   - `z = (x*w + b).sum()` ifadesi üzerinden backward() çağır.
-   - `w.grad` ve `b.grad` değerlerini gözlemle.
-
-### ✅ Çıktı Dosyası
-📄 `02_pytorch_fundamentals.ipynb`
-
----
-
-## **03 — Simple NN on Tabular Data**
-
-### 🎯 Amaç
-Küçük tabular veri üzerinde mini sinir ağı kurmak, eğitmek ve ML ile kıyaslamak.
-
-### 📘 İçerik
-- `nn.Sequential` vs `nn.Module` farkı
-- Mini ağ yapısı: `Linear → ReLU → Linear → Sigmoid`
-- Loss fonksiyonları (`BCELoss`, `MSELoss`)
-- Optimizasyon: `SGD` ve `Adam`
-- Eğitim döngüsü: `forward → loss → backward → step → zero_grad`
-- Dataloader ve epoch kavramları
-
-### 🧩 Görevler
-1. **İlk Ağ:**
-   - Sequential model oluştur, 50–100 epoch eğit.
-   - Train/Validation ayrımı yap.
-2. **Performans Takibi:**
-   - Her epoch sonunda train/val loss değerlerini kaydet.
-3. **Kıyaslama:**
-   - Aynı problemi sklearn `LogisticRegression` ile çöz.
-   - DL’in fazla/az geldiği durumları yorumla.
-
-### ✅ Çıktı Dosyası
-📄 `03_simple_nn_tabular.ipynb`
-
----
-
-## 🔍 Ekstra Öneriler
-- `03_simple_nn_tabular.ipynb` içerisine **loss/accuracy grafik çizimleri** ekle.
-- **state_dict** ile en iyi modeli kaydetmeyi uygula.
-- GPU kullanımını otomatik hale getir:
-  ```python
-  device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-  model.to(device)
-  ```
-
----
-
-## 📁 Dosya Yapısı
 ```
-VisionAI_Week1/
-│
-├── 01_theory_from_ml_to_dl.ipynb
-├── 02_pytorch_fundamentals.ipynb
-├── 03_simple_nn_tabular.ipynb
-└── README.md
+vision-ai-training/
+├── week1/                          # AI & Deep Learning Foundations
+│   ├── day1-2/                     # From ML to Deep Learning
+│   │   └── neural_networks_basics.py
+│   ├── day3-4/                     # Introduction to PyTorch
+│   │   └── pytorch_introduction.py
+│   └── day5-7/                     # Image Processing with OpenCV
+│       ├── opencv_fundamentals.py
+│       └── output/                 # Generated images
+├── week2/                          # Convolutional Neural Networks
+│   ├── day1-3/                     # Understanding CNNs
+│   │   └── cnn_from_scratch.py
+│   ├── day4-5/                     # Training, Evaluation & Optimization
+│   │   └── training_optimization.py
+│   └── day6-7/                     # Transfer Learning
+│       └── transfer_learning.py
+├── week3/                          # Advanced Vision Tasks
+│   ├── day1-3/                     # Object Detection (YOLO)
+│   │   └── object_detection_yolo.py
+│   └── day4-7/                     # Image Segmentation
+│       └── image_segmentation.py
+├── week4/                          # Capstone Project & Deployment
+│   ├── README.md                   # Week 4 project documentation
+│   ├── PROJECT_STATUS.md           # Project status report
+│   └── YOLO-Safety-Equipment-Detection-main/
+│       ├── capstone_project.py     # Real-time PPE detection application
+│       ├── train_model.py          # Model training script
+│       ├── test_model.py           # Model testing script (interactive menu)
+│       ├── quick_test.py           # Quick inference test
+│       ├── data/                   # Safety equipment dataset
+│       │   ├── train/              # Training images and labels
+│       │   ├── valid/              # Validation images and labels
+│       │   ├── test/               # Test images and labels
+│       │   └── data.yaml           # Dataset configuration
+│       ├── runs/                   # Training and detection outputs
+│       └── results/                # Training results and metrics
+├── data/                           # Training datasets (MNIST, CIFAR-10)
+│   ├── MNIST/
+│   └── cifar-10-batches-py/
+├── models/                         # Extra custom trained models and datasets
+│   ├── Hard Hat Workers.v14-raw_headclassonly.yolov8/
+│   └── safety-vest.v1i.yolov8/
+├── requirements.txt                # Python dependencies
+├── Dockerfile                      # Container configuration
+├── docker-compose.yml              # Docker Compose configuration
+├── SETUP.md                        # Detailed setup guide
+├── DATASET_GUIDE.md                # Dataset usage guide
+├── PROJECT_STRUCTURE.md            # Detailed project structure
+├── LICENSE                         # MIT License
+├── CONTRIBUTING.md                 # Contribution guidelines
+├── GITHUB_SETUP.md                 # GitHub setup guide
+└── README.md                       # This file
 ```
 
----
+## Quick Start
 
-## 🧭 Kapanış Notu
-Bu üç modül tamamlandığında, yalnızca DL’in neden ortaya çıktığını değil,  
-aynı zamanda modern AI modellerinin **veriden öğrenme sürecini** kod seviyesinde anlamış olacaksın.
+### Detaylı Kurulum Rehberi
+
+**Yeni başlayanlar için**: [`SETUP.md`](SETUP.md) dosyasını okuyun.
+
+### Hızlı Kurulum
+
+#### 1. Projeyi İndirin
+```bash
+git clone <repository-url>
+cd vision-ai-training
+```
+
+#### 2. Python 3.12 Kurulumu (Önemli!)
+
+**Python 3.12 gerekli** çünkü PyTorch CUDA desteği için Python 3.8-3.12 destekleniyor.
+
+**Windows:**
+- Python 3.12 İndirme: https://www.python.org/downloads/release/python-31212/
+- Kurulumda **"Add Python 3.12 to PATH"** seçeneğini işaretleyin
+
+**Kontrol:**
+```powershell
+py -3.12 --version
+```
+
+#### 3. Virtual Environment Oluşturun
+
+**Windows:**
+```powershell
+py -3.12 -m venv venv312
+venv312\Scripts\activate
+```
+
+**Linux/Mac:**
+```bash
+python3.12 -m venv venv312
+source venv312/bin/activate
+```
+
+#### 4. GPU Desteği (Önerilen)
+
+**CUDA ile PyTorch Kurulumu:**
+```powershell
+# Önce mevcut PyTorch'u kaldırın (eğer varsa)
+pip uninstall torch torchvision torchaudio -y
+
+# CUDA 11.8 ile PyTorch kurun
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+```
+
+**GPU Kontrolü:**
+```python
+python -c "import torch; print('CUDA:', torch.cuda.is_available()); print('GPU:', torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'None')"
+```
+
+#### 5. Paketleri Kurun
+```bash
+pip install -r requirements.txt
+```
+
+#### 6. Kurulumu Test Edin
+```bash
+py test_installation.py
+```
+
+#### 7. Model Eğitimi (İsteğe Bağlı)
+
+**İnteraktif Mod:**
+```bash
+py train_models.py
+```
+
+**GPU ile Hızlı Eğitim:**
+```bash
+py train_models.py --train-all --epochs 50 --device cuda
+```
+
+**Detaylar:** [`DATASET_GUIDE.md`](DATASET_GUIDE.md)
+
+#### 8. Projeyi Çalıştırın
+```bash
+# İnteraktif mod (menü ile)
+cd week4/YOLO-Safety-Equipment-Detection-main
+python capstone_project.py
+
+# Webcam ile
+python capstone_project.py --mode webcam
+
+# Video ile
+python capstone_project.py --mode video --input path/to/video.mp4
+```
+
+### Docker ile Kurulum
+
+```bash
+docker-compose build
+docker-compose up
+```
+
+Detaylar için: [`SETUP.md`](SETUP.md)
+
+## Weekly Schedule
+
+### Week 1: AI & Deep Learning Foundations
+- **Days 1-2**: From ML to Deep Learning (Neural networks, backpropagation, gradient descent)
+- **Days 3-4**: Introduction to PyTorch (Tensors, autograd, building models)
+- **Days 5-7**: Image Processing Fundamentals with OpenCV
+
+### Week 2: Convolutional Neural Networks (CNNs)
+- **Days 1-3**: Understanding CNNs (Convolution, pooling, padding, stride)
+- **Days 4-5**: Training, Evaluation & Optimization (Loss functions, optimizers, data augmentation)
+- **Days 6-7**: Transfer Learning with Pre-trained Models (ResNet, VGG, MobileNet)
+
+### Week 3: Advanced Vision Tasks
+- **Days 1-3**: Object Detection (YOLO, bounding boxes, IoU, NMS)
+- **Days 4-7**: Image Segmentation (Semantic vs instance segmentation, U-Net)
+
+### Week 4: Capstone Project & Deployment
+- **Capstone Project**: Real-time Safety Equipment Detection (Hard Hat & Safety Vest)
+- Custom model training with GPU support
+- Interactive mode for easy usage
+- Containerize and deploy the application
+
+## Resources
+
+- [PyTorch Documentation](https://pytorch.org/docs/)
+- [OpenCV Documentation](https://docs.opencv.org/)
+- [Jupyter Notebooks Guide](https://jupyter-notebook.readthedocs.io/)
+
+## License
+
+This training program is for educational purposes.
 

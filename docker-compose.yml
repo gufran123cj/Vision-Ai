@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  vision-ai-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: vision-ai-training
+    # GPU support for CUDA acceleration (required for week 4 YOLO training)
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    volumes:
+      # Data directories
+      - ./data:/app/data
+      - ./output:/app/output
+      
+      # Models and training results (persistent storage)
+      - ./models:/app/models
+      - ./runs:/app/runs
+      
+      # Week directories (for outputs and week 4 YOLO project)
+      - ./week1:/app/week1
+      - ./week2:/app/week2
+      - ./week3:/app/week3
+      - ./week4:/app/week4
+    devices:
+      # Webcam access (Linux only - comment out for Windows/Mac)
+      - /dev/video0:/dev/video0
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONDONTWRITEBYTECODE=1
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=compute,utility
+      - CUDA_VISIBLE_DEVICES=0
+    # Default command - interactive bash shell
+    # Week 4 YOLO scripts usage examples:
+    #   python week4/YOLO-Safety-Equipment-Detection-main/train_model.py
+    #   python week4/YOLO-Safety-Equipment-Detection-main/test_model.py
+    #   python week4/YOLO-Safety-Equipment-Detection-main/quick_test.py
+    #   python week4/YOLO-Safety-Equipment-Detection-main/capstone_project.py --mode webcam
+    # Or uncomment below for direct training:
+    # command: python week4/YOLO-Safety-Equipment-Detection-main/train_model.py
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+
+
+
+
+
+
