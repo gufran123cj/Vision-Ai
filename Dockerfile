@@ -12,16 +12,13 @@ ENV DEBIAN_FRONTEND=noninteractive \
     PIP_NO_CACHE_DIR=1 \
     PIP_DISABLE_PIP_VERSION_CHECK=1
 
-# Install Python 3.12 and system dependencies
+# Install Python 3.11 (default in Ubuntu 22.04) and system dependencies
+# Python 3.11 is compatible with PyTorch CUDA 11.8 (supports Python 3.8-3.12)
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    software-properties-common \
-    ca-certificates \
-    gnupg \
-    && add-apt-repository -y ppa:deadsnakes/ppa \
-    && apt-get update && apt-get install -y --no-install-recommends \
-    python3.12 \
-    python3.12-dev \
-    python3.12-distutils \
+    python3.11 \
+    python3.11-dev \
+    python3.11-distutils \
+    python3-pip \
     libgl1-mesa-glx \
     libglib2.0-0 \
     libsm6 \
@@ -33,14 +30,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     wget \
     && rm -rf /var/lib/apt/lists/*
 
-# Install pip for Python 3.12
-RUN wget https://bootstrap.pypa.io/get-pip.py && \
-    python3.12 get-pip.py && \
-    rm get-pip.py
+# Upgrade pip for Python 3.11
+RUN python3.11 -m pip install --no-cache-dir --upgrade pip setuptools wheel
 
 # Create symlink for python command
-RUN ln -s /usr/bin/python3.12 /usr/bin/python && \
-    ln -s /usr/bin/python3.12 /usr/bin/python3
+RUN ln -sf /usr/bin/python3.11 /usr/bin/python && \
+    ln -sf /usr/bin/python3.11 /usr/bin/python3
 
 # Copy requirements first for better Docker layer caching
 COPY requirements.txt .
