@@ -22,10 +22,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 # Install Python 3.12 and system dependencies
 # Python 3.12 is compatible with PyTorch CUDA 11.8 (supports Python 3.8-3.12)
+# Note: python3.12-distutils is not available in Ubuntu 22.04, setuptools will be installed via pip
 RUN apt-get install -y --no-install-recommends \
     python3.12 \
     python3.12-dev \
-    python3.12-distutils \
     libgl1-mesa-glx \
     libglib2.0-0 \
     libsm6 \
