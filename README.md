@@ -1,4 +1,4 @@
-# Four Week Training Program for Vision AI
+# Program for Vision AI
 
 A comprehensive 4-week program to master Computer Vision using PyTorch, OpenCV, and modern deep learning techniques.
 
@@ -82,32 +82,32 @@ vision-ai-training/
 
 ## Quick Start
 
-### Detaylı Kurulum Rehberi
+### Detailed Setup Guide
 
-**Yeni başlayanlar için**: [`SETUP.md`](SETUP.md) dosyasını okuyun.
+**For beginners**: Read the [`SETUP.md`](SETUP.md) file.
 
-### Hızlı Kurulum
+### Quick Setup
 
-#### 1. Projeyi İndirin
+#### 1. Download the Project
 ```bash
 git clone <repository-url>
 cd vision-ai-training
 ```
 
-#### 2. Python 3.12 Kurulumu (Önemli!)
+#### 2. Python 3.12 Installation (Important!)
 
-**Python 3.12 gerekli** çünkü PyTorch CUDA desteği için Python 3.8-3.12 destekleniyor.
+**Python 3.12 is required** because PyTorch CUDA support is available for Python 3.8-3.12.
 
 **Windows:**
-- Python 3.12 İndirme: https://www.python.org/downloads/release/python-31212/
-- Kurulumda **"Add Python 3.12 to PATH"** seçeneğini işaretleyin
+- Python 3.12 Download: https://www.python.org/downloads/release/python-31212/
+- During installation, check the **"Add Python 3.12 to PATH"** option
 
-**Kontrol:**
+**Verify:**
 ```powershell
 py -3.12 --version
 ```
 
-#### 3. Virtual Environment Oluşturun
+#### 3. Create Virtual Environment
 
 **Windows:**
 ```powershell
@@ -121,67 +121,67 @@ python3.12 -m venv venv312
 source venv312/bin/activate
 ```
 
-#### 4. GPU Desteği (Önerilen)
+#### 4. GPU Support (Recommended)
 
-**CUDA ile PyTorch Kurulumu:**
+**PyTorch Installation with CUDA:**
 ```powershell
-# Önce mevcut PyTorch'u kaldırın (eğer varsa)
+# First, uninstall existing PyTorch (if any)
 pip uninstall torch torchvision torchaudio -y
 
-# CUDA 11.8 ile PyTorch kurun
+# Install PyTorch with CUDA 11.8
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 ```
 
-**GPU Kontrolü:**
+**GPU Check:**
 ```python
 python -c "import torch; print('CUDA:', torch.cuda.is_available()); print('GPU:', torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'None')"
 ```
 
-#### 5. Paketleri Kurun
+#### 5. Install Packages
 ```bash
 pip install -r requirements.txt
 ```
 
-#### 6. Kurulumu Test Edin
+#### 6. Test Installation
 ```bash
 py test_installation.py
 ```
 
-#### 7. Model Eğitimi (İsteğe Bağlı)
+#### 7. Model Training (Optional)
 
-**İnteraktif Mod:**
+**Interactive Mode:**
 ```bash
 py train_models.py
 ```
 
-**GPU ile Hızlı Eğitim:**
+**Quick Training with GPU:**
 ```bash
 py train_models.py --train-all --epochs 50 --device cuda
 ```
 
-**Detaylar:** [`DATASET_GUIDE.md`](DATASET_GUIDE.md)
+**Details:** [`DATASET_GUIDE.md`](DATASET_GUIDE.md)
 
-#### 8. Projeyi Çalıştırın
+#### 8. Run the Project
 ```bash
-# İnteraktif mod (menü ile)
+# Interactive mode (with menu)
 cd week4/YOLO-Safety-Equipment-Detection-main
 python capstone_project.py
 
-# Webcam ile
+# With webcam
 python capstone_project.py --mode webcam
 
-# Video ile
+# With video
 python capstone_project.py --mode video --input path/to/video.mp4
 ```
 
-### Docker ile Kurulum
+### Installation with Docker
 
 ```bash
 docker-compose build
 docker-compose up
 ```
 
-Detaylar için: [`SETUP.md`](SETUP.md)
+For details: [`SETUP.md`](SETUP.md)
 
 ## Weekly Schedule
 
