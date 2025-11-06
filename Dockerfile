@@ -56,7 +56,8 @@ RUN python3.12 -m pip install --no-cache-dir --upgrade pip setuptools wheel && \
     python3.12 -m pip install --no-cache-dir torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 
 # Install Python dependencies (PyTorch packages will be skipped as already installed)
-RUN python3.12 -m pip install --no-cache-dir -r requirements.txt
+# Use --ignore-installed to handle distutils-installed packages like blinker
+RUN python3.12 -m pip install --no-cache-dir --ignore-installed -r requirements.txt
 
 # Copy application code
 COPY . .
