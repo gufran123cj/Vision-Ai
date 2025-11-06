@@ -21,16 +21,16 @@ cd vision-ai-training
 # Or simply download and extract the project
 ```
 
-### 2. Python 3.12 Kurulumu
+### 2. Python 3.12 Installation
 
-**ÖNEMLİ**: Python 3.12 gerekli çünkü PyTorch CUDA desteği için Python 3.8-3.12 destekleniyor.
+**IMPORTANT**: Python 3.12 is required because PyTorch CUDA support is available for Python 3.8-3.12.
 
 **Windows:**
-1. Python 3.12 İndir: https://www.python.org/downloads/release/python-31212/
-2. Kurulum sırasında **"Add Python 3.12 to PATH"** seçeneğini işaretleyin
-3. Kurulumu tamamlayın
+1. Download Python 3.12: https://www.python.org/downloads/release/python-31212/
+2. During installation, check the **"Add Python 3.12 to PATH"** option
+3. Complete the installation
 
-**Kontrol:**
+**Verify:**
 ```powershell
 py -3.12 --version
 ```
@@ -49,23 +49,23 @@ python3.12 -m venv venv312
 source venv312/bin/activate
 ```
 
-### 4. GPU Desteği Kurulumu (Önerilen)
+### 4. GPU Support Installation (Recommended)
 
-**CUDA ile PyTorch Kurulumu:**
+**PyTorch Installation with CUDA:**
 ```bash
-# Önce mevcut PyTorch'u kaldırın (eğer varsa)
+# First, uninstall existing PyTorch (if any)
 pip uninstall torch torchvision torchaudio -y
 
-# CUDA 11.8 ile PyTorch kurun
+# Install PyTorch with CUDA 11.8
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 ```
 
-**GPU Kontrolü:**
+**GPU Check:**
 ```python
 python -c "import torch; print('CUDA:', torch.cuda.is_available()); print('GPU:', torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'None')"
 ```
 
-**Not**: GPU yoksa veya kurmak istemiyorsanız, normal `pip install -r requirements.txt` komutu CPU versiyonu kuracaktır.
+**Note**: If you don't have a GPU or don't want to install GPU support, the normal `pip install -r requirements.txt` command will install the CPU version.
 
 ### 5. Install Dependencies
 
@@ -130,63 +130,63 @@ python week3/day4-7/image_segmentation.py
 
 ### Week 4: Capstone Project
 
-**Model Eğitimi (GPU ile - Önerilen):**
+**Model Training (with GPU - Recommended):**
 ```bash
-# İnteraktif mod
+# Interactive mode
 py train_models.py
 
-# Komut satırı ile
+# Command line
 py train_models.py --train-all --epochs 50 --device cuda
 ```
 
 **Real-time Vision Application:**
 ```bash
-# İnteraktif mod
+# Interactive mode
 py week4/capstone_project.py
 
-# Webcam ile
+# With webcam
 py week4/capstone_project.py --mode webcam --helmet-model models/helmet_model_trained.pt --vest-model models/vest_model_trained.pt
 
-# Video ile
+# With video
 py week4/capstone_project.py --mode video --input video.mp4 --helmet-model models/helmet_model_trained.pt --vest-model models/vest_model_trained.pt
 
-# Tek görüntü ile
+# With single image
 py week4/capstone_project.py --mode image --input path/to/image.jpg --output result.jpg --helmet-model models/helmet_model_trained.pt --vest-model models/vest_model_trained.pt
 ```
 
-**Detaylar için:** [`DATASET_GUIDE.md`](DATASET_GUIDE.md) ve [`week4/MODEL_SETUP.md`](week4/MODEL_SETUP.md)
+**For details:** [`DATASET_GUIDE.md`](DATASET_GUIDE.md) and [`week4/MODEL_SETUP.md`](week4/MODEL_SETUP.md)
 
 ## Troubleshooting
 
 ### CUDA/GPU Issues
 
-**GPU Kurulumu:**
+**GPU Installation:**
 
-1. **NVIDIA Driver Kurulumu:**
-   - NVIDIA Driver İndir: https://www.nvidia.com/Download/index.aspx
-   - GPU modelinizi seçin ve driver'ı indirin
-   - Kurulumu tamamlayın ve bilgisayarı yeniden başlatın
-   - Kontrol: `nvidia-smi`
+1. **NVIDIA Driver Installation:**
+   - Download NVIDIA Driver: https://www.nvidia.com/Download/index.aspx
+   - Select your GPU model and download the driver
+   - Complete the installation and restart your computer
+   - Verify: `nvidia-smi`
 
-2. **PyTorch CUDA Kurulumu:**
+2. **PyTorch CUDA Installation:**
    ```bash
-   # Mevcut PyTorch'u kaldır
+   # Uninstall existing PyTorch
    pip uninstall torch torchvision torchaudio -y
    
-   # CUDA 11.8 ile kur
+   # Install with CUDA 11.8
    pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
    ```
 
-3. **GPU Testi:**
+3. **GPU Test:**
    ```python
    python -c "import torch; print('CUDA:', torch.cuda.is_available()); print('GPU:', torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'None')"
    ```
 
-**Sorun Giderme:**
-- Python 3.12 kullandığınızdan emin olun (3.14+ CUDA desteklemiyor)
-- NVIDIA driver'ın yüklü olduğunu kontrol edin (`nvidia-smi`)
-- Virtual environment'ın aktif olduğundan emin olun
-- PyTorch'un CUDA versiyonu kurulduğunu kontrol edin (`torch.cuda.is_available()`)
+**Troubleshooting:**
+- Make sure you're using Python 3.12 (3.14+ doesn't support CUDA yet)
+- Check that NVIDIA driver is installed (`nvidia-smi`)
+- Ensure virtual environment is activated
+- Verify PyTorch CUDA version is installed (`torch.cuda.is_available()`)
 
 ### OpenCV Issues
 
@@ -231,16 +231,16 @@ Some scripts will automatically download datasets:
 
 ### Custom Datasets
 
-Projede iki özel dataset mevcuttur:
+Two custom datasets are available in the project:
 - **Hard Hat Workers** (`models/Hard Hat Workers.v14-raw_headclassonly.yolov8/`)
 - **Safety Vest** (`models/safety-vest.v1i.yolov8/`)
 
-Bu dataset'lerle custom model eğitebilirsiniz:
+You can train custom models with these datasets:
 ```bash
 py train_models.py --train-all --epochs 50 --device cuda
 ```
 
-**Detaylar:** [`DATASET_GUIDE.md`](DATASET_GUIDE.md)
+**Details:** [`DATASET_GUIDE.md`](DATASET_GUIDE.md)
 
 ## Next Steps
 
