@@ -176,12 +176,131 @@ python capstone_project.py --mode video --input path/to/video.mp4
 
 ### Installation with Docker
 
-```bash
-docker-compose build
-docker-compose up
+#### Prerequisites
+
+1. **Docker Desktop** must be installed
+   - Windows: [Docker Desktop for Windows](https://www.docker.com/products/docker-desktop/)
+   - After installation, restart your computer
+
+2. **NVIDIA GPU** (optional but recommended):
+   - NVIDIA Container Toolkit should be installed
+   - Enable WSL Integration in Docker Desktop: Settings > Resources > WSL Integration
+
+#### Step-by-Step Docker Setup
+
+**Step 1: Navigate to project directory**
+```powershell
+cd "path/to/Vision-Ai"
 ```
 
-For details: [`SETUP.md`](SETUP.md)
+**Step 2: Build Docker image**
+```powershell
+docker-compose build
+```
+This process will:
+- Download CUDA 11.8 supported base image
+- Install Python 3.12
+- Install all dependencies (PyTorch, OpenCV, etc.)
+- Copy project files
+- May take 5-10 minutes (depending on internet speed)
+
+**Step 3: Start the container**
+```powershell
+docker-compose up -d
+```
+The `-d` parameter runs it in the background.
+
+**Step 4: Verify container is running**
+```powershell
+docker-compose ps
+```
+Should show status as "Up".
+
+**Step 5: Connect to container (interactive mode)**
+```powershell
+docker-compose exec vision-ai-app bash
+```
+Or:
+```powershell
+docker exec -it vision-ai-training bash
+```
+
+**Step 6: Verify installation inside container**
+```bash
+# Check Python version
+python --version
+# Should show: Python 3.12.x
+
+# Check CUDA/GPU
+python -c "import torch; print('CUDA:', torch.cuda.is_available()); print('GPU:', torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'None')"
+
+# Check PyTorch version
+python -c "import torch; print('PyTorch:', torch.__version__)"
+
+# Check OpenCV
+python -c "import cv2; print('OpenCV:', cv2.__version__)"
+```
+
+#### Using the Project in Docker
+
+**Model Training:**
+```bash
+# Navigate to week 4 project
+cd week4/YOLO-Safety-Equipment-Detection-main
+
+# Train model
+python train_model.py
+```
+
+**Model Testing:**
+```bash
+# Quick test
+python quick_test.py
+
+# Interactive test menu
+python test_model.py
+
+# Real-time detection with video
+python capstone_project.py --mode video --input /app/samplevideo.mp4
+```
+
+#### Useful Docker Commands
+
+```powershell
+# Stop container
+docker-compose down
+
+# Stop container and remove volumes (careful!)
+docker-compose down -v
+
+# View container logs
+docker-compose logs -f
+
+# Restart container
+docker-compose restart
+
+# Check container status
+docker-compose ps
+```
+
+#### Important Notes
+
+1. **Volume Mounts (Data Persistence):**
+   - `./data`, `./models`, `./runs` folders are shared with host
+   - Training results and models will persist
+
+2. **Webcam Access (Windows):**
+   - `/dev/video0` in `docker-compose.yml` is for Linux only
+   - On Windows, webcam access may require additional configuration
+   - Alternative: Use video files instead
+
+3. **GPU Check:**
+   ```bash
+   # Inside container
+   python -c "import torch; print('CUDA:', torch.cuda.is_available())"
+   ```
+
+For more details: [`SETUP.md`](SETUP.md)
 
 ## Weekly Schedule
 
